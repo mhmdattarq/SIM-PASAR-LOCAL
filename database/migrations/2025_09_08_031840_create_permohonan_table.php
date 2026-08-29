@@ -37,7 +37,7 @@ return new class extends Migration
             $table->string('ktp')->nullable();
             $table->string('kk')->nullable();
             $table->string('foto')->nullable();
-            $table->enum('status', ['draft', 'lengkap', 'disetujui', 'ditolak'])->default('draft');
+            $table->enum('status', ['draft', 'lengkap', 'disetujui', 'ditolak', 'verifikasi', 'selesai'])->default('draft');
             $table->text('keterangan')->nullable();
             $table->timestamps();
         });
@@ -48,6 +48,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('permohon');
+        Schema::dropIfExists('permohonan');
     }
 };
