@@ -12,6 +12,9 @@ return new class extends Migration
             $table->id();
             $table->string('nama_pasar');
             $table->text('alamat');
+            $table->integer('total_kios')->default(0);
+            $table->integer('total_los')->default(0);
+            $table->integer('total_pelataran')->default(0);
             $table->string('foto_depan')->nullable();
             $table->string('foto_belakang')->nullable();
             $table->string('foto_dalam')->nullable();

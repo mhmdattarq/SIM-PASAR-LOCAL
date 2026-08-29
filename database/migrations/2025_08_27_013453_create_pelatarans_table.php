@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('nomor_pelataran');
             $table->string('ukuran_pelataran')->nullable();
             $table->decimal('harga_sewa', 12, 2)->nullable();
-            $table->enum('satuan_retribusi', ['hari', 'bulan'])->default('hari');
+            $table->enum('satuan_retribusi', ['hari', 'bulan', 'tahun'])->default('hari');
             $table->enum('kategori_pelataran', ['tetap', 'tidaktetap', 'insidentil'])->default('tetap');
             $table->string('lokasi_pelataran')->nullable();
-            $table->unsignedBigInteger('pasar_id'); // relasi manual ke pasar
+            $table->foreignId('pasar_id')->constrained('pasar')->onDelete('cascade');
 
             $table->timestamps();
         });

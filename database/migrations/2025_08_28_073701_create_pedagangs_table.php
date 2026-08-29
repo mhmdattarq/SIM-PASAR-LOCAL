@@ -13,19 +13,22 @@ return new class extends Migration
     {
         Schema::create('pedagangs', function (Blueprint $table) {
             $table->id();
-            $table->string('nip')->unique();
-            $table->string('nama');
-            $table->string('nik', 16)->unique();
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
+            $table->string('nip')->nullable()->unique();
+            $table->string('nama')->nullable();
+            $table->string('nama_lengkap')->nullable();
+            $table->string('nik', 16)->nullable()->unique();
             $table->string('tempat_lahir')->nullable();
             $table->date('tanggal_lahir')->nullable();
-            $table->enum('jenis_kelamin', ['L', 'P']);
-            $table->text('alamat');
-            $table->string('no_hp', 15);
-            $table->string('jenis_dagangan');
+            $table->enum('jenis_kelamin', ['L', 'P'])->nullable();
+            $table->text('alamat')->nullable();
+            $table->string('no_hp', 15)->nullable();
+            $table->string('jenis_dagangan')->nullable();
             $table->string('no_kk', 16)->nullable();
             $table->string('nama_usaha')->nullable();
             $table->string('npwp')->nullable();
             $table->string('foto_ktp')->nullable();
+            $table->string('foto_diri')->nullable();
             $table->string('foto_pedagang')->nullable();
             $table->enum('status', ['aktif', 'non-aktif'])->default('aktif');
             $table->timestamps();

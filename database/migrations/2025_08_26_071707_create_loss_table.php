@@ -18,7 +18,7 @@ return new class extends Migration
             $table->decimal('harga_sewa', 12, 2)->nullable();
             $table->enum('status_los', ['tersedia', 'terisi', 'pengajuan'])->default('tersedia');
             $table->string('lokasi_los')->nullable();
-            $table->unsignedBigInteger('pasar_id'); // relasi manual ke pasar
+            $table->foreignId('pasar_id')->constrained('pasar')->onDelete('cascade');
 
             $table->timestamps();
         });
